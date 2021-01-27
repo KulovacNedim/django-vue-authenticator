@@ -19,12 +19,14 @@ const store = createStore({
   },
   getters: {
     loggedIn(state) {
-      return state.accessToken != null;
+      state;
+      return localStorage.getItem('access-token') != null;
     },
   },
   actions: {
     userLogout(context) {
       if (context.getters.loggedIn) {
+        localStorage.removeItem('access-token');
         context.commit('destroyToken');
       }
     },
@@ -40,6 +42,7 @@ const store = createStore({
               access: response.data.access,
               refresh: response.data.refresh,
             });
+            localStorage.setItem('access-token', response.data.access);
             resolve();
           })
           .catch((err) => {
