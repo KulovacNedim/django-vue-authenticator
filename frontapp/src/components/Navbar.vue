@@ -1,35 +1,34 @@
 <template>
-  <div class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white nav-1">
-      <div class="container mw-0 px-3">
-
-        <a class="navbar-brand" href="#">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-            <router-link :to = "{ name:'posts' }" exact>Posts</router-link>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white nav-1">
+    <div class="container mw-0 px-3">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" style="margin-left: 50px">
+          <router-link :to="{ name: 'posts' }" exact>Posts</router-link>
+        </li>
+        <li class="nav-item" style="margin-left: 50px">
+          <router-link :to="{ name: 'login' }" exact v-if="accessToken != null"
+            >Login</router-link
+          >
+        </li>
+        <li class="nav-item" style="margin-left: 50px">
+          <router-link :to="{ name: 'logout' }" exact v-if="accessToken == null"
+            >Logout</router-link
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script>
-  export default {
-    name: 'Navbar',
-  }
+export default {
+  name: "Navbar",
+  accessToken: localStorage.getItem("access-token"),
+};
 </script>
 
 <style scoped>
-    a {
-      color:#000;
-  }
+a {
+  color: #000;
+}
 </style>
