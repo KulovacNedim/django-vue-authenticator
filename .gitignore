@@ -5,8 +5,8 @@ node_modules
 */dist
 
 # Byte-compiled / optimized / DLL files
-*/__pycache__/
-*.py[cod]
+*django-rest-api/__pycache__/
+*django-rest-api/.py[cod]
 *$py.class
 
 # C extensions
